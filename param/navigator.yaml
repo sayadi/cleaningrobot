@@ -1,5 +1,5 @@
 # Inflation params used for path planning
-map_inflation_radius: 1.0
+map_inflation_radius: 0.2
 robot_radius: 0.175
 
 # Tolerance in target position for MoveToPosition2D (meter)

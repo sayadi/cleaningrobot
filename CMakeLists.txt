@@ -119,7 +119,8 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-include_directories(. "/usr/inclue/cppconn")
+include_directories(. "/usr/include/cppconn")
+include_directories(include)
 ## Declare a C++ library
 # add_library(cleaning_robot
 #   src/${PROJECT_NAME}/cleaning_robot.cpp
@@ -194,12 +195,23 @@ link_directories("/usr/lib" "mysqlcppconn")
 
 add_executable(tf_broadcaster src/tf_broadcaster.cpp)
 add_executable(tf_listener src/tf_listener.cpp)
-add_executable(laserScan src/laserScan.cpp)
+add_executable(laserScan src/laserScan.cpp src/lidarLite.cpp include/lidarLite.h)
 add_executable(odometry src/odometry.cpp)
+add_executable(rightStepperController src/rightStepperController.cpp)
+add_executable(leftStepperController src/leftStepperController.cpp)
+add_executable(laserStepperController src/laserStepperController.cpp)
 add_executable(update_robot_status src/update_robot_status.cpp)
+add_executable(lidarTest src/lidarTest.cpp src/lidarLite.cpp include/lidarLite.h)
+add_executable(services src/services.cpp)
+
 target_link_libraries(tf_broadcaster ${catkin_LIBRARIES})
 target_link_libraries(tf_listener ${catkin_LIBRARIES})
 target_link_libraries(odometry ${catkin_LIBRARIES})
-target_link_libraries(laserScan ${catkin_LIBRARIES})
+target_link_libraries(rightStepperController ${catkin_LIBRARIES} wiringPi wiringPiDev pthread)
+target_link_libraries(leftStepperController ${catkin_LIBRARIES} wiringPi wiringPiDev pthread)
+target_link_libraries(laserStepperController ${catkin_LIBRARIES} wiringPi wiringPiDev pthread)
+target_link_libraries(laserScan ${catkin_LIBRARIES} wiringPi wiringPiDev pthread)
 target_link_libraries(update_robot_status ${catkin_LIBRARIES})
 target_link_libraries(update_robot_status mysqlcppconn)
+target_link_libraries (lidarTest wiringPi wiringPiDev pthread)
+target_link_libraries(services ${catkin_LIBRARIES})

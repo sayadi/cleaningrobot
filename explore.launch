@@ -12,17 +12,25 @@
 	</node>
 
 	<node pkg="cleaning_robot" type="tf_broadcaster" name="tf_broadcaster" output="screen">
-
- 	</node>
+ 		</node>
 
   	<node pkg="cleaning_robot" type="tf_listener" name="tf_listener" output="screen">
-  	</node>
-
-  	<node pkg="cleaning_robot" type="laserScan" name="laserScan" output="screen">
   		</node>
 
 	<node pkg="cleaning_robot" type="odometry" name="odometry" output="screen">
   		</node>
+
+	<node pkg="cleaning_robot" type="laserScan" name="laserScan" output="screen">
+		</node>
+
+	<node pkg="cleaning_robot" type="rightStepperController" name="rightStepperController" output="screen">
+		</node>
+
+	<node pkg="cleaning_robot" type="leftStepperController" name="leftStepperController" output="screen">
+		</node>
+
+	<node pkg="cleaning_robot" type="laserStepperController" name="laserStepperController" output="screen">
+		</node>
 
 	<!-- Start the Operator to control the robot -->
 	<node name="Operator" pkg="nav2d_operator" type="operator" >
@@ -45,6 +53,9 @@
 	<node name="GetMap" pkg="nav2d_navigator" type="get_map_client" />
 	<node name="Explore" pkg="nav2d_navigator" type="explore_client" />
 	<node name="SetGoal" pkg="nav2d_navigator" type="set_goal_client" />
+
+	<node pkg="cleaning_robot" type="services" name="services" output="screen">
+		</node>
 
 
 

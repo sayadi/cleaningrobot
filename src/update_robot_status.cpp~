@@ -50,7 +50,7 @@ int main(int argc, char **argv)
 	ros::Subscriber waterStatusSubscriber = nodeHandle.subscribe("waterLevelTopic", 10, waterStatusCallback);
 	ros::Subscriber dustLevelSubscriber = nodeHandle.subscribe("dustLevelTopic", 10, dustLevelCallback);
 
-	ros::Rate r(1.0);
+	ros::Rate r(0.01);
 
 	while(nodeHandle.ok())
 	{

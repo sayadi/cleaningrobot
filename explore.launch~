@@ -18,21 +18,26 @@
   	<node pkg="cleaning_robot" type="tf_listener" name="tf_listener" output="screen">
   	</node>
 
-  	<node pkg="cleaning_robot" type="laserScan" name="laserScan" output="screen">
-  		</node>
-
 	<node pkg="cleaning_robot" type="odometry" name="odometry" output="screen">
   		</node>
+
+	<node pkg="cleaning_robot" type="laserScan" name="laserScan" output="screen">
+		</node>
+
+	<node pkg="cleaning_robot" type="motorsController" name="motorsController" output="screen">
+		</node>
 
 	<!-- Start the Operator to control the robot -->
 	<node name="Operator" pkg="nav2d_operator" type="operator" >
 		<remap from="scan" to="base_scan"/>
 		<rosparam file="$(find cleaning_robot)/param/operator.yaml"/>
-		<rosparam file="$(find cleaning_robot)/param/costmap.yaml" ns="local_map" />
+		<rosparam file="$(find cleaning_robot)/param/costmap.yaml" ns="local_map"/>
 	</node>
 
 	<!-- Start Mapper to genreate map from laser scans -->
-	<node name="slam_gmapping" pkg="gmapping" type="slam_gmapping" args="scan:=base_scan _base_frame:=base_link map:=/map" 	output="screen">
+	<node name="Mapper" pkg="nav2d_karto" type="mapper">
+		<remap from="scan" to="base_scan"/>
+		<rosparam file="$(find cleaning_robot)/param/mapper.yaml"/>
   </node>
 
 	<!-- Start the Navigator to move the robot autonomously -->

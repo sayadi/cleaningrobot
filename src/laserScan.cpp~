@@ -73,6 +73,4 @@ int main(int argc, char **argv)
 
     } // end while
 
-	r.sleep();
-
 } // end main
