@@ -64,7 +64,7 @@ int main(int argc, char **argv)
 			//sql::ResultSet *resultSet;
 
 			driver = get_driver_instance();
-			connection = driver->connect("tcp://52.39.162.195:3306", "root", "12345678");
+			connection = driver->connect("tcp://IP_ADDRESS", USER_NAME, ******);
 			connection->setSchema("cleaningrobot");
 			// Prepare values for SQl query
 
